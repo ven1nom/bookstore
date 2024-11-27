@@ -1,25 +1,31 @@
 import React from 'react'
-import { FaDollarSign } from "react-icons/fa6";
 import { BsCart2 } from "react-icons/bs";
-import BannerImage from "../../assets/banner.png"
+import  {getImgUrl} from "../../utils/getimgUrl"
 
-const Book = () => {
+
+const Book = ({book}) => {
+
+  //destructuring book
+  const {title,description,oldPrice,newPrice,coverImage}=book;
+
   return (
-    <div className='flex'>
+    <div className='flex m-5 px-5'>
 
-    <div>
+    <div className='mr-8'>
         {/** Left side */}
-        <img src={BannerImage} alt="" className="size-40" />
+        <img src={`${getImgUrl(coverImage)}`} alt="bookImg" className="w-100" />
     </div>
+<div className='m-4'>
+  <h1 className='font-semibold text-lg'>{title}</h1>
+  <p className='text-gray-500 text-wrap'>{description}</p>
   <div>
-  <h1>The Time Has Come</h1>
-  <p>Lindbergh's Pharmacy is an Athens, Georgia, institution...</p>
-  <div>
-    <span>${27.89}</span>
-    <span>${30.99}</span>
-    <br />
-    < button><span><BsCart2 /> Add to basket</span></button>
+    <span className='text-xl'>${newPrice}</span>
+    <span className='text-gray-400 line-through text-xl'>${oldPrice}</span>
   </div>
+  <div className="flex bg-primary">
+  <BsCart2 />
+  <button >Add to basket</button>
+</div>
 </div> 
 
     </div>
