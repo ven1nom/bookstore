@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Book from './Book'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/grid';
+import 'swiper/css/pagination';
+import {Pagination } from 'swiper/modules';
 
 const TopSell = () => {
 
@@ -35,14 +42,32 @@ fetchBooks(); // Invoking the fetch function
         <option value="Adventure">Adventure</option>
       </select>
     </div>
-    <div>
-        {
-          books.map((book)=>{
-            console.log(book.cover); // Log each book object
-            return <Book key={book.id} book={book} />;
-          })
-        }
-    </div>
+    <Swiper
+      slidesPerView={3}
+      spaceBetween={10}
+      pagination={{
+        clickable: true,
+      }}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      }}
+      modules={[Pagination]}
+      className="mySwiper"
+    >
+      {books.map((book) => (
+        <SwiperSlide key={book.id}>
+          <Book book={book} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
     </>
   )
 }

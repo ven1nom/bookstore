@@ -17,7 +17,7 @@ const navigation=[
 ]
 
 //conditional rendering of user
-let currentUser=true;
+let currentUser=false;
 const Navbar = () => {
 
 //dropdown menu
@@ -57,12 +57,12 @@ const [isDropDown,setIsDropDown]=useState(false);
                 </ul>
               </div>
             )}</>: (
-               <Link to="/"><FaRegUser className='mr-5' /></Link> 
+               <Link to="/login"><FaRegUser className='mr-5' /></Link> 
             )}
         </div>
            <button><FaRegHeart className='mr-5'/></button>
            <div className='flex items-center bg-yellow-300 py-2 px-2 rounded-xl'>
-            <Link> <PiShoppingCartLight className='ml-3 mr-3' />
+            <Link to="/cart"> <PiShoppingCartLight className='ml-3 mr-3' />
             </Link>
             <span className='ml-3 mr-8'>Basket</span>
            </div> 
