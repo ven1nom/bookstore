@@ -14,11 +14,9 @@ const cartSlice = createSlice({
             if(!existingItem) {
                 state.cartItems.push(action.payload)
                 Swal.fire({
-                    position: "top-end",
+                    title: "Drag me!",
                     icon: "success",
-                    title: "Product Added to the Cart",
-                    showConfirmButton: false,
-                    timer: 1500
+                    draggable: true
                   });
             } else(
                 Swal.fire({
